@@ -1,41 +1,41 @@
-# dict-pretty-printer
+# dict-fancy-printer
 A simple library used to print python dictionaries in a fancier and understandable way 
 
 
 ## Install
 To install from master branch just do:
 ```
-pip install git+https://github.com/matteogabburo/dict-pretty-printer
+pip install git+https://github.com/matteogabburo/dict-fancy-printer
 ```
 
 If you want to install a specific development branch, use
 ```
-pip install git+https://github.com/matteogabburo/dict-pretty-printer@<branch_name>
+pip install git+https://github.com/matteogabburo/dict-fancy-printer@<branch_name>
 ```
 
 ## Usage
 
-### PrettyPrinter
+### FancyPrinter
 - Example
 ```
-from goburba.utils import PrettyPrinter
-printer = PrettyPrinter()
+from goburba.utils import FancyPrinter
+printer = FancyPrinter()
 print(printer(d))
 ```
 
-### print_pretty_dict
+### print_fancy_dict
 - Example
 ```
-from goburba.utils import print_pretty_dict
+from goburba.utils import print_fancy_dict
 d = {"Hi": 1, "I":2, 3: "an", 4 : {"Matteo": 1, 2: "Gabburo"}}
-print_pretty_dict(d)
+print_fancy_dict(d)
 ```
 
-### pretty_dict
+### fancy_dict
 - Example
 ```
-from goburba.utils import pretty_dict
+from goburba.utils import fancy_dict
 d = {"Hi": 1, "I":2, 3: "an", 4 : {"Matteo": 1, 2: "Gabburo"}}
-d = pretty_dict(d)
+d = fancy_dict(d)
 print(d)
 ```

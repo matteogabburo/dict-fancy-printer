@@ -2,7 +2,7 @@ from typing import Dict
 from termcolor import colored
 
 
-class PrettyPrinter:
+class FancyPrinter:
     """
     class used to handle the string representation of a dict
     """
@@ -46,13 +46,13 @@ class PrettyPrinter:
         self, input_dict: Dict, key_triggers: str = "", show_private: bool = False
     ) -> str:
         """
-        Return a string that represents a dict, but prettyfied
+        Return a string that represents a dict, but fancyfied
         Args:
             input_dict (Dict): The ugly dictionary that needs a makeup
             key_triggers (str, optional): A list of strings that signal a change of the formattation (Example: the overridded parameters). Defaults to "".
             show_private (bool, optional): Show private attributes. Defaults to False.
         Returns:
-            str: The super-pretty string that represents the input dictionary.
+            str: The super-fancy string that represents the input dictionary.
         """
 
         def _get_reduced_key_list(keys, show_private):
@@ -80,7 +80,7 @@ class PrettyPrinter:
 
             return colored(item, color)
 
-        def _prettystring(input_dict, count, is_list=False):
+        def _fancystring(input_dict, count, is_list=False):
             # convert keys to string
             if isinstance(input_dict, dict):
                 input_dict = {str(k): v for k, v in input_dict.items()}
@@ -111,7 +111,7 @@ class PrettyPrinter:
                             ]
                             + ["END_KEY_DICT"]
                             + [f"TAB_{max_local_klen}_{len(k)}"]
-                            + _prettystring(v, count + 1)
+                            + _fancystring(v, count + 1)
                         )
                     ret += ["END_DICT"]
 
@@ -141,7 +141,7 @@ class PrettyPrinter:
                             + ["END_KEY_LIST"]
                         )
 
-                        ret += [f"TAB_{max_local_klen}_{len(k)}"] + _prettystring(
+                        ret += [f"TAB_{max_local_klen}_{len(k)}"] + _fancystring(
                             v, count + 1, False if isinstance(v, dict) else is_list
                         )
                     ret += ["END_LIST_DICT_BLOCK"]
@@ -149,7 +149,7 @@ class PrettyPrinter:
             elif isinstance(input_dict, list):
                 ret += ["BEG_LIST"]
                 for v in input_dict:
-                    ret += _prettystring(v, count, is_list=True)
+                    ret += _fancystring(v, count, is_list=True)
                 ret += ["END_LIST"]
 
             elif is_list:
@@ -168,7 +168,7 @@ class PrettyPrinter:
         # gen an ugly string
         ugly_list = (
             ["START"]
-            + [str(tok) for tok in _prettystring(input_dict, count=0)]
+            + [str(tok) for tok in _fancystring(input_dict, count=0)]
             + ["END"]
         )
 
@@ -196,7 +196,7 @@ class PrettyPrinter:
             for tok in ugly_list
         ]
 
-        # ugly2pretty
+        # ugly2fancy
         return "".join(
             [
                 self.formattation[tok] if tok in self.formattation else tok
