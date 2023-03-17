@@ -4,7 +4,7 @@ A simple library used to print python dictionaries in a fancier and understandab
 
 ## Install
 
-To install from piop:
+To install from pip:
 ```
 pip install dict-fancy-printer
 ```
