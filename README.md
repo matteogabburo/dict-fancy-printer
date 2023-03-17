@@ -3,6 +3,12 @@ A simple library used to print python dictionaries in a fancier and understandab
 
 
 ## Install
+
+To install from piop:
+```
+pip install dict-fancy-printer
+```
+
 To install from master branch just do:
 ```
 pip install git+https://github.com/matteogabburo/dict-fancy-printer
