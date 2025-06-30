@@ -92,9 +92,9 @@ class FancyPrinter:
                     input_dict.keys(), show_private
                 )
 
-                max_local_klen = max([len(x) for x in reduced_keys])
-
                 if len(reduced_keys) > 0:
+                    max_local_klen = max([len(x) for x in reduced_keys])
+
                     ret += ["BEG_DICT"]
                     for k in reduced_keys:
                         if len(k) > self.max_k_len:
@@ -114,6 +114,9 @@ class FancyPrinter:
                             + _fancystring(v, count + 1)
                         )
                     ret += ["END_DICT"]
+                else:
+                    # Handle empty dictionary case
+                    ret += ["BEG_DICT", "END_DICT"]
 
             # if it is a vocab but inside a list
             elif isinstance(input_dict, dict) and is_list:
@@ -121,9 +124,9 @@ class FancyPrinter:
                     input_dict.keys(), show_private
                 )
 
-                max_local_klen = max([len(x) for x in reduced_keys])
-
                 if len(reduced_keys) > 0:
+                    max_local_klen = max([len(x) for x in reduced_keys])
+
                     ret += ["BEG_LIST_DICT_BLOCK"]
                     for k in reduced_keys:
                         if len(k) > self.max_k_len:
@@ -145,6 +148,9 @@ class FancyPrinter:
                             v, count + 1, False if isinstance(v, dict) else is_list
                         )
                     ret += ["END_LIST_DICT_BLOCK"]
+                else:
+                    # Handle empty dictionary case in list
+                    ret += ["BEG_LIST_DICT_BLOCK", "END_LIST_DICT_BLOCK"]
 
             elif isinstance(input_dict, list):
                 ret += ["BEG_LIST"]
